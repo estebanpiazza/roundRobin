@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Round Robin UTI</title>
+    <style>
+        body{background-color: black;}
+        .footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: grey;
+  text-align: center;
+}
+#arrPrint{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    color:white;
+    font-size: 20px;
+}
+#boton{
+    margin: auto;
+    padding: 10px;
+    margin: 0;
+  position: absolute;
+  left:45%
+ 
+}
+    </style>
+</head>
+<body>
+    <a href="https://exactas.uba.ar/uti/institucional/uti-sis/"target="_blank"><img src="https://exactas.uba.ar/uti/wp-content/uploads/2013/10/cropped-logo_uti_votado.png" alt="" t></a>
+    <pre id="arrPrint"></pre>
+    <br>
+    <button id="boton" onclick="cambiarOrden(orden)">Rotar</button>
+    <div class="footer">Hecho con amor para <strong>UTI-SIS</strong><div class="br">Por Esteban</div></div>
+</body>
+<script>
+    // let dia1 = 20+2+2022
+    window.onload = function(){/*
+        var today = new Date();
+var dd = today.getDate()
+var mm = today.getMonth() + 1
+var yyyy = today.getFullYear()
+console.log(dd)
+console.log(mm)
+console.log(yyyy)
+today = dd+mm+yyyy;
+
+console.log(today)
+console.log(today-dia1)
+ */
+ //año-mes-dia
+let hoy = new Date()
+let dia = hoy.getDate();
+let mes = hoy.getMonth()+1;
+let anio = hoy.getFullYear();
+let fechaCompleta = `${anio}-${mes}-${dia}.`;
+let fechaInicio = new Date('2022-02-03').getTime();
+let fechaFin    = new Date(fechaCompleta).getTime();
+let diff = (fechaFin - fechaInicio)/7
+let entero = parseInt(diff/(1000*60*60*24))
+cambiarOrden(orden)
+for(let i =0;i<entero;i++){
+    cambiarOrden(orden)
+}  
+    }
+    
+    let orden = ["Esteban","Gonza","Kari","Ale","Angel"]
+    let pivot = "placeholder"
+    function cambiarOrden(array){
+        pivot = array.shift()
+        array.push(pivot)
+        document.getElementById("arrPrint").innerHTML = JSON.stringify(orden, null, 2);
+    }
+    
+
+</script>
+</html>
