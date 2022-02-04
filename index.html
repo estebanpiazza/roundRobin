@@ -57,28 +57,34 @@ details{
 </body>
 <script>
 window.onload = function(){
+    //creo la fecha de hoy
 let hoy = new Date()
 let dia = hoy.getDate();
 let mes = hoy.getMonth()+1;
 let anio = hoy.getFullYear();
 let fechaCompleta = `${anio}-${mes}-${dia}.`;
+//tomo los milisegundos de la fecha de hoy y el dia inicial del round
 let fechaFin    = new Date(fechaCompleta).getTime();
 let fechaInicio = new Date('2022-02-07').getTime();
+//calculo la diferencia y la paso a cantidad de dias dividiendolo por 7 para saber la cantidad de semanas que pasaron
 let entero = parseInt(((fechaFin - fechaInicio)/7)/(1000*60*60*24))
+//imprimo para que no quede vacio (solo valido durante la primer semana)
 document.getElementById("arrPrint").innerHTML = JSON.stringify(orden, null, 2);
+//roto los valores del array segun la cantidad de semanas que pasaron del dia inicial
 for(let i =0;i<entero;i++){
     cambiarOrden(orden)
 }  
     }
-    
+    //array inicial
     let orden = ["Gonza","Esteban","Kari","Ale","Angel",]
-    let pivot = "placeholder"
+    let pivot = "no se que haces leyendo esto"
+    //funcion de rotación del array
     function cambiarOrden(array){
         pivot = array.shift()
         array.push(pivot)
         document.getElementById("arrPrint").innerHTML = JSON.stringify(orden, null, 2);
     }
-    
+    // aguante javascript <3 
 
 </script>
 </html>
