@@ -74,19 +74,10 @@ details{
 window.onload = function(){
     //creo la fecha de hoy
 let hoy = new Date()
-console.log("hoy: " + hoy)
-let dia = hoy.getDate();
-console.log("dia: " + dia)
-let mes = hoy.getMonth()+1;
-console.log("mes: " + mes)
-let anio = hoy.getFullYear();
-console.log("anio: " + anio)
-let fechaCompleta = `${anio}-${mes}-${dia}.`;
-console.log(fechaCompleta)
 //tomo los milisegundos de la fecha de hoy y el dia inicial del round
-let fechaFin    = new Date(fechaCompleta).getTime();
+let fechaFin = new Date(hoy).getTime();
 console.log("fecha fin: " +fechaFin)
-let fechaInicio = new Date('2022-02-07').getTime();
+let fechaInicio = new Date('2022-02-08').getTime();
 console.log("fecha inicio: " + fechaInicio)
 console.log("diferencia en dias: " + ((fechaFin - fechaInicio))/(1000*60*60*24))
 //calculo la diferencia y la paso a cantidad de dias dividiendolo por 7 para saber la cantidad de semanas que pasaron
@@ -102,7 +93,7 @@ let inicioEnDias = new Date(fechaInicio)
 let finEnDias = new Date(fechaFin)
 document.getElementById("li1").innerHTML = "Fecha de inicio: " + inicioEnDias
         document.getElementById("li2").innerHTML = "Fecha de hoy: " + finEnDias
-        document.getElementById("li3").innerHTML = "Diferencia en dias: "+ ((fechaFin - fechaInicio))/(1000*60*60*24)
+        document.getElementById("li3").innerHTML = "Diferencia en dias: "+ parseInt(((fechaFin - fechaInicio))/(1000*60*60*24))
         document.getElementById("li4").innerHTML = "Diferencia en semanas (rotaciones): "+entero
     }
     //array inicial
