@@ -49,31 +49,61 @@ details{
     <pre id="arrPrint"></pre>
     <br>
     <button id="boton" onclick="cambiarOrden(orden)">Rotar</button>
+    
+    <div style="color:white;margin:30px">
+        Información:
+        <ul>
+            <li id="li1">Fecha de inicio: </li>
+            <li id="li2">Fecha de hoy: </li>
+            <li id="li3">Diferencia en dias: </li>
+            <li id="li4">cantidad de semanas: </li>
+
+
+        </ul>
+
+    </div>
     <details>
         <summary>Spoiler</summary>
         Si, el modo oscuro es por Ale
             </details>  
+
     <div class="footer">Hecho con amor para <strong>UTI-SIS</strong><div class="br">Por Esteban</div>  </div>
+
 </body>
 <script>
 window.onload = function(){
     //creo la fecha de hoy
 let hoy = new Date()
+console.log("hoy: " + hoy)
 let dia = hoy.getDate();
+console.log("dia: " + dia)
 let mes = hoy.getMonth()+1;
+console.log("mes: " + mes)
 let anio = hoy.getFullYear();
+console.log("anio: " + anio)
 let fechaCompleta = `${anio}-${mes}-${dia}.`;
+console.log(fechaCompleta)
 //tomo los milisegundos de la fecha de hoy y el dia inicial del round
 let fechaFin    = new Date(fechaCompleta).getTime();
+console.log("fecha fin: " +fechaFin)
 let fechaInicio = new Date('2022-02-07').getTime();
+console.log("fecha inicio: " + fechaInicio)
+console.log("diferencia en dias: " + ((fechaFin - fechaInicio))/(1000*60*60*24))
 //calculo la diferencia y la paso a cantidad de dias dividiendolo por 7 para saber la cantidad de semanas que pasaron
 let entero = parseInt(((fechaFin - fechaInicio)/7)/(1000*60*60*24))
+console.log("cantidad de semanas: "+entero)
 //imprimo para que no quede vacio (solo valido durante la primer semana)
 document.getElementById("arrPrint").innerHTML = JSON.stringify(orden, null, 2);
 //roto los valores del array segun la cantidad de semanas que pasaron del dia inicial
 for(let i =0;i<entero;i++){
     cambiarOrden(orden)
 }  
+let inicioEnDias = new Date(fechaInicio)
+let finEnDias = new Date(fechaFin)
+document.getElementById("li1").innerHTML = "Fecha de inicio: " + inicioEnDias
+        document.getElementById("li2").innerHTML = "Fecha de hoy: " + finEnDias
+        document.getElementById("li3").innerHTML = "Diferencia en dias: "+ ((fechaFin - fechaInicio))/(1000*60*60*24)
+        document.getElementById("li4").innerHTML = "Diferencia en semanas (rotaciones): "+entero
     }
     //array inicial
     let orden = ["Angel","Gonza","Esteban","Kari","Ale",]
@@ -83,6 +113,8 @@ for(let i =0;i<entero;i++){
         pivot = array.shift()
         array.push(pivot)
         document.getElementById("arrPrint").innerHTML = JSON.stringify(orden, null, 2);
+        
+ 
     }
     // aguante javascript <3 
 
