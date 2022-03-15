@@ -75,7 +75,7 @@ window.onload = function(){
     //creo la fecha de hoy
 let hoy = new Date()
 //tomo los milisegundos de la fecha de hoy y el dia inicial del round
-let fechaFin = new Date(hoy).getTime();
+let fechaFin = hoy.getTime();
 console.log("fecha fin: " +fechaFin)
 let fechaInicio = new Date('2022-02-08').getTime();
 console.log("fecha inicio: " + fechaInicio)
